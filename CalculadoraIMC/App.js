@@ -12,7 +12,6 @@ import {Alert, View, Text, StyleSheet} from 'react-native';
 import {Button, TextInput} from 'react-native-paper';
 import {CustomButton} from './components/Buttons';
 
-
 export default class App extends Component {
   constructor(props) {
     super(props);
@@ -24,7 +23,7 @@ export default class App extends Component {
     };
   }
 
- getIMCColor = imc => {
+  getIMCColor = imc => {
     if (imc < 27) {
       colorTexto = 'green';
     } else if (imc >= 27 && imc <= 39.9) {
@@ -43,9 +42,8 @@ export default class App extends Component {
     let conDecimal = parseInt(this.state.peso) / Math.pow(alturaMetros, 2);
     let imc = conDecimal.toFixed(2);
 
-    
     if (this.state.peso === '' || this.state.altura === '') {
-      Alert.alert('Mensaje informativo','Debes introducir Peso y Altura...');
+      Alert.alert('Mensaje informativo', 'Debes introducir Peso y Altura...');
       clasificacion = 'Debes introducir datos...';
       this.setState({color: 'red'});
       this.setState({resultado: clasificacion});
@@ -67,7 +65,6 @@ export default class App extends Component {
       } else if (imc >= 50) {
         clasificacion = 'Obesidad de tipo IV (extrema)';
       }
-
       this.setState({resultado: clasificacion});
       this.getIMCColor(imc);
     }
@@ -85,6 +82,7 @@ export default class App extends Component {
           }}>
           Calculadora IMC
         </Text>
+
         <View style={styles.sectionCentral}>
           <Text
             style={{
@@ -95,7 +93,6 @@ export default class App extends Component {
             }}>
             Datos
           </Text>
-
           <Text
             style={{
               paddingTop: 20,
@@ -107,11 +104,10 @@ export default class App extends Component {
           <TextInput
             value={this.state.peso}
             placeholder="Introduce el peso..."
-            onChangeText={text => this.setState({...this.state, peso: text})}
+            onChangeText={pesoText => this.setState({...this.state, peso: pesoText})}
             keyboardType="numeric"
             backgroundColor="white"
             maxLength={3}></TextInput>
-
           <Text
             style={{
               paddingTop: 20,
@@ -120,11 +116,10 @@ export default class App extends Component {
             }}>
             Altura
           </Text>
-
           <TextInput
             value={this.state.altura}
             placeholder="Introduce la altura en cm..."
-            onChangeText={text => this.setState({...this.state, altura: text})}
+            onChangeText={alturaText => this.setState({...this.state, altura: alturaText})}
             backgroundColor="white"
             keyboardType="numeric"
             maxLength={3}></TextInput>
@@ -138,6 +133,7 @@ export default class App extends Component {
               text="Calcular IMG"
             />
           </View>
+
           <View style={{paddingLeft: 20}}>
             <Text
               style={{
