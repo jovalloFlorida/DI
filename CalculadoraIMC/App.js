@@ -107,7 +107,7 @@ export default class App extends Component {
             onChangeText={pesoText => this.setState({...this.state, peso: pesoText})}
             keyboardType="numeric"
             backgroundColor="white"
-            maxLength={3}></TextInput>
+            maxLength={4}></TextInput>
           <Text
             style={{
               paddingTop: 20,
