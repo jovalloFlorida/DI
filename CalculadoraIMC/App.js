@@ -24,6 +24,7 @@ export default class App extends Component {
   }
 
   getIMCColor = imc => {
+    let colorTexto = 'blue';
     if (imc < 27) {
       colorTexto = 'green';
     } else if (imc >= 27 && imc <= 39.9) {
@@ -37,7 +38,6 @@ export default class App extends Component {
 
   calculoImc = () => {
     let clasificacion = 'Introducido caracter NO admitido... ';
-    let colorTexto = 'blue;';
     let alturaMetros = parseFloat(this.state.altura / 100);
     let conDecimal = parseInt(this.state.peso) / Math.pow(alturaMetros, 2);
     let imc = conDecimal.toFixed(2);
